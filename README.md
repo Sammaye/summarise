@@ -3,7 +3,7 @@ Summarise
 
 Makes alerts more...responsive.
 
-It is based around Bootstrap CSS classes and what not and is a small but quite powerful layer to make dealing with alerts on Ajax forms and other items a lot easier.
+It is based around Bootstrap CSS classes (but is not limited to Bootstrap) and what not and is a small but quite powerful layer to make dealing with alerts on Ajax forms and other items a lot easier.
 
 Let's get some example out there. 
 
