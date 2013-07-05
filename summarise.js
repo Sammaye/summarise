@@ -49,8 +49,8 @@
 						'options' : settings
 					});
 					
-					if(!$this.hasClass('alert')){
-						$this.addClass('alert');
+					if(!$this.hasClass(settings.base_class)){
+						$this.addClass(settings.base_class);
 					}
 					$this.addClass('summarise-alert');
 					
@@ -75,13 +75,13 @@
 			$this=el||$(this);
 			settings=$.extend(true, {}, options, $this.data('summarise').options);
 			if(type!==null&&type!==undefined){
-				type='alert-'+type;			
+				cssClass=settings[type+'_class'];			
 				$this.removeClass([
 				    settings['error_class'],
 				    settings['success_class'],
 				    settings['warning_class'],
 				    settings['info_class']
-				].join(' ')).addClass(type);
+				].join(' ')).addClass(cssClass);
 			}
 		},
 		content : function(content,el){
