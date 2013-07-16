@@ -114,7 +114,10 @@
 			$this=$(this);
 			reset($this);
 			$this.css({display:'none'});			
-		}
+		},
+		focus: function(){
+			$("html, body").animate({ scrollTop: $(this).offset().top }, "fast");	
+		}		
 	},
 	reset = function(el){
 		$this=el;
