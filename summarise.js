@@ -49,8 +49,8 @@
 						'options' : settings
 					});
 					
-					if(!$this.hasClass('alert')){
-						$this.addClass('alert');
+					if(!$this.hasClass(settings.base_class)){
+						$this.addClass(settings.base_class);
 					}
 					$this.addClass('summarise-alert');
 					
@@ -75,25 +75,26 @@
 			$this=el||$(this);
 			settings=$.extend(true, {}, options, $this.data('summarise').options);
 			if(type!==null&&type!==undefined){
-				type='alert-'+type;			
+				cssClass=settings[type+'_class'];			
 				$this.removeClass([
 				    settings['error_class'],
 				    settings['success_class'],
 				    settings['warning_class'],
 				    settings['info_class']
-				].join(' ')).addClass(type);
+				].join(' ')).addClass(cssClass);
 			}
 		},
 		content : function(content,el){
 			$this=el||$(this);
 			settings=$.extend(true, {}, options, $this.data('summarise').options);		
 			if(content!==null&&content!==undefined){
+				
+				$this.html('');
+				
+				if(settings.tpl_close!==null&&settings.tpl_close!==undefined)
+					$this.append($(settings.tpl_close));					
+				
 				if(typeof content == "object"){
-					
-					$this.html('');
-					
-					if(settings.tpl_close!==null&&settings.tpl_close!==undefined)
-						$this.append($(settings.tpl_close));					
 					if(content['message']!==undefined&&content['message']!==null)
 						$this.append(content['message']);
 					if(content['list']!==undefined&&content['list']!==null){	
@@ -103,7 +104,7 @@
 						});
 					}
 				}else
-					$this.html(content);
+					$this.append(content);
 				$this.css({display:'block'});
 			}			
 		},
